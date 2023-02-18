@@ -9,8 +9,12 @@ const ERR_COUNTRY_NOT_FOUND = 'Oops, there is no country with that name.';
 const searchBoxRef = document.querySelector('#search-box');
 const countryInfoRef = document.querySelector('.country-info');
 const countryListRef = document.querySelector('.country-list');
+const clearInputRef = document.querySelector('.clear-input');
 
-searchBoxRef.setAttribute('placeholder', 'Enter country name');
+clearInputRef.addEventListener('click', () => {
+  searchBoxRef.value = '';
+  clearAllCountryInfo();
+});
 
 searchBoxRef.addEventListener(
   'input',
