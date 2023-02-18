@@ -10,6 +10,8 @@ const searchBoxRef = document.querySelector('#search-box');
 const countryInfoRef = document.querySelector('.country-info');
 const countryListRef = document.querySelector('.country-list');
 
+searchBoxRef.setAttribute('placeholder', 'Enter country name');
+
 searchBoxRef.addEventListener(
   'input',
   utils.debounce(onSearchInput, DEBOUNCE_DELAY)
