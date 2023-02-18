@@ -40,7 +40,7 @@ body {
 
 .country-info__list {
   margin-top: 10px;
-  margin-left: 31px;
+  margin-left: 35px;
 }
 
 .country-info__list :not(:last-child) {
