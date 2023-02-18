@@ -17,9 +17,10 @@ searchBoxRef.addEventListener(
 
 function onSearchInput({ target: el }) {
   const name = el.value.trim();
-  if (!name) return clearAllCountryInfo();
 
-  fetchCountries(name).then(onFulfilled).catch(onRejected);
+  return name
+    ? fetchCountries(name).then(onFulfilled).catch(onRejected)
+    : clearAllCountryInfo();
 }
 
 function onRejected(reason) {
@@ -43,6 +44,10 @@ function onFulfilled(data) {
   return data.length === 1 ? renderCountryInfo(data) : renderCountryList(data);
 }
 
+function clearAllCountryInfo() {
+  countryInfoRef.innerHTML = countryListRef.innerHTML = '';
+}
+
 function renderCountryList(data = []) {
   countryListRef.innerHTML = data
     .map(
@@ -62,15 +67,11 @@ function renderCountryInfo(data = []) {
     <h2 class="country-info__title">
         <img class="country-info__flag" src=${
           flags.svg
-        } width="20" alt="state flag">${name.official}
+        } width="25" alt="state flag">${name.official}
     </h2>
     <ul class="country-info__list">
         <li><b>Capital</b>: ${capital}</li>
         <li><b>Population</b>: ${population}</li>
         <li><b>Languages</b>: ${Object.values(languages).join(', ')}</li>
     </ul>`;
-}
-
-function clearAllCountryInfo() {
-  countryInfoRef.innerHTML = countryListRef.innerHTML = '';
 }

@@ -17,7 +17,9 @@ export function fetchCountries(
   name,
   fields = 'name,capital,population,flags,languages'
 ) {
-  const url = `https://restcountries.com/v3.1/name/${name}?fields=${fields}`;
+  const url = `https://restcountries.com/v3.1/name/${name}${
+    fields ? `?fields=${fields}` : ''
+  }`;
 
   return fetch(url).then(resp =>
     resp.ok ? resp.json() : Promise.reject(resp)
