@@ -63,7 +63,6 @@ body {
 
 .search-box {
   position: relative;
-
   display: inline-block;
   margin-bottom: 16px;
   width: 350px;
@@ -90,10 +89,9 @@ body {
   color: #a7a7a7;
   line-height: 0;
 
-  background-color: transparent;
-  border-style: none;
+  background-color: unset;
+  border-style: unset;
   cursor: pointer;
-
   transition: color ease-out 250ms;
 }
 

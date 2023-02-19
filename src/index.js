@@ -45,7 +45,7 @@ function clearAllCountryInfo() {
 }
 
 function renderCountryList(data = []) {
-  // кешируем данные для выбора из списка без запроса к серверу
+  // кешируем для выбора из списка без запроса к серверу
   renderCountryList.data = data;
 
   countryListRef.innerHTML = data
@@ -75,9 +75,9 @@ function renderCountryInfo(data = []) {
     </ul>`;
 }
 
-////////////////////////////////
-// Доп. функциональность
-////////////////////////////////
+////////////////////////
+// Доп. функционал
+////////////////////////
 
 // очистка поля ввода
 clearInputRef.addEventListener('click', () => {
@@ -89,9 +89,9 @@ clearInputRef.addEventListener('click', () => {
 countryListRef.addEventListener('click', ({ target }) => {
   if (target.tagName !== 'SPAN') return;
 
-  const currData = renderCountryList.data[target.dataset.idx];
+  const selected = renderCountryList.data[target.dataset.idx];
 
   clearAllCountryInfo();
-  searchBoxRef.value = currData.name.official;
-  renderCountryInfo([currData]);
+  searchBoxRef.value = selected.name.official;
+  renderCountryInfo([selected]);
 });
