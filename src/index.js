@@ -7,9 +7,9 @@ const MSG_SEARCH_LIMIT_REACHED = 'Please, enter a more specific name.';
 const ERR_COUNTRY_NOT_FOUND = 'Oops, there is no country with that name.';
 
 const searchInputRef = document.querySelector('.search-box__input');
+const clearInputBtnRef = document.querySelector('.search-box__clear-btn');
 const countryInfoRef = document.querySelector('.country-info');
 const countryListRef = document.querySelector('.country-list');
-const clearInputBtnRef = document.querySelector('.search-box__clear-btn');
 
 searchInputRef.addEventListener(
   'input',
