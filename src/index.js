@@ -11,9 +11,21 @@ const countryInfoRef = document.querySelector('.country-info');
 const countryListRef = document.querySelector('.country-list');
 const clearInputRef = document.querySelector('.clear-input');
 
+// очистка поля ввода
 clearInputRef.addEventListener('click', () => {
   searchBoxRef.value = '';
   clearAllCountryInfo();
+});
+
+// выбор из списка для показа детальной информации
+countryListRef.addEventListener('click', ({ target }) => {
+  if (target.tagName !== 'SPAN') return;
+
+  const currData = renderCountryList.data[target.dataset.idx];
+
+  clearAllCountryInfo();
+  searchBoxRef.value = target.textContent.trim();
+  renderCountryInfo([currData]);
 });
 
 searchBoxRef.addEventListener(
@@ -55,12 +67,15 @@ function clearAllCountryInfo() {
 }
 
 function renderCountryList(data = []) {
+  // кешируем данные для выбора из списка
+  renderCountryList.data = data;
+
   countryListRef.innerHTML = data
     .map(
-      ({ name, flags }) =>
+      ({ name, flags }, idx) =>
         `<li class="country-list__item">
             <img class="country-list__flag" src=${flags.svg} width="20" alt="state flag">
-            ${name.official}
+            <span class="country-list__name" data-idx="${idx}">${name.official}</span>
         </li>`
     )
     .join('');

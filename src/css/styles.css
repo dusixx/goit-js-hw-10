@@ -33,6 +33,14 @@ body {
   align-items: center;
 }
 
+.country-list__name {
+  cursor: pointer;
+}
+
+.country-list__name:hover {
+  background-color: #dbdbdb;
+}
+
 .country-list__flag,
 .country-info__flag {
   border: 1px solid rgb(175, 175, 175);
@@ -53,18 +61,25 @@ body {
   align-items: center;
 }
 
+.search-form {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
 .search-box {
   position: relative;
 
   display: inline-block;
   margin-bottom: 16px;
+  width: 350px;
 }
 
 #search-box {
   font: inherit;
   padding: 8px;
   padding-right: 25px;
-  width: 250px;
+  width: 100%;
 }
 
 #search-box:placeholder-shown ~ .clear-input {
