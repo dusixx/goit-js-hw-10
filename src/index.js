@@ -17,16 +17,13 @@ searchBoxRef.addEventListener(
 );
 
 function onSearchInput({ target: el }) {
-  const name = el.value.trim();
+  clearAllCountryInfo();
 
-  return name
-    ? fetchCountries(name).then(onFulfilled).catch(onRejected)
-    : clearAllCountryInfo();
+  const name = el.value.trim();
+  if (name) fetchCountries(name).then(onFulfilled).catch(onRejected);
 }
 
 function onRejected(reason) {
-  clearAllCountryInfo();
-
   if (reason instanceof Error) throw new Error(reason);
 
   utils.error(
@@ -37,8 +34,6 @@ function onRejected(reason) {
 }
 
 function onFulfilled(data) {
-  clearAllCountryInfo();
-
   if (data.length >= SEARCH_RESULT_LIMIT)
     return utils.info(MSG_SEARCH_LIMIT_REACHED);
 
