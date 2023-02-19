@@ -6,12 +6,12 @@ const SEARCH_RESULT_LIMIT = 10;
 const MSG_SEARCH_LIMIT_REACHED = 'Please, enter a more specific name.';
 const ERR_COUNTRY_NOT_FOUND = 'Oops, there is no country with that name.';
 
-const searchBoxRef = document.querySelector('#search-box');
+const searchInputRef = document.querySelector('.search-box__input');
 const countryInfoRef = document.querySelector('.country-info');
 const countryListRef = document.querySelector('.country-list');
-const clearInputRef = document.querySelector('.clear-input');
+const clearInputBtnRef = document.querySelector('.search-box__clear-btn');
 
-searchBoxRef.addEventListener(
+searchInputRef.addEventListener(
   'input',
   utils.debounce(onSearchInput, DEBOUNCE_DELAY)
 );
@@ -82,8 +82,8 @@ function renderCountryDetails(data = []) {
 ////////////////////////
 
 // очистка поля ввода
-clearInputRef.addEventListener('click', () => {
-  searchBoxRef.value = '';
+clearInputBtnRef.addEventListener('click', () => {
+  searchInputRef.value = '';
   clearAllCountryInfo();
 });
 
@@ -94,6 +94,6 @@ countryListRef.addEventListener('click', ({ target }) => {
   const selected = renderCountryList.data[target.dataset.idx];
 
   clearAllCountryInfo();
-  searchBoxRef.value = selected.name.official;
+  searchInputRef.value = selected.name.official;
   renderCountryDetails([selected]);
 });
