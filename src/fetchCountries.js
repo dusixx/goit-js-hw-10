@@ -13,12 +13,12 @@ export const utils = {
   },
 };
 
+const BY_NAME = 'https://restcountries.com/v3.1/name/';
+
 export const fetchCountries = (
   name,
   fields = 'name,capital,population,flags,languages'
 ) =>
-  fetch(
-    `https://restcountries.com/v3.1/name/${name}${
-      fields ? `?fields=${fields}` : ''
-    }`
-  ).then(resp => (resp.ok ? resp.json() : Promise.reject(resp)));
+  fetch(`${BY_NAME}${name}${fields ? `?fields=${fields}` : ''}`).then(resp =>
+    resp.ok ? resp.json() : Promise.reject(resp)
+  );
