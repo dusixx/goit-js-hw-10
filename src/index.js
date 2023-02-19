@@ -37,7 +37,9 @@ function onFulfilled(data) {
   if (data.length >= SEARCH_RESULT_LIMIT)
     return utils.info(MSG_SEARCH_LIMIT_REACHED);
 
-  return data.length === 1 ? renderCountryInfo(data) : renderCountryList(data);
+  return data.length === 1
+    ? renderCountryDetails(data)
+    : renderCountryList(data);
 }
 
 function clearAllCountryInfo() {
@@ -59,7 +61,7 @@ function renderCountryList(data = []) {
     .join('');
 }
 
-function renderCountryInfo(data = []) {
+function renderCountryDetails(data = []) {
   const [{ name, flags, capital, population, languages }] = data;
 
   countryInfoRef.innerHTML = `
@@ -85,7 +87,7 @@ clearInputRef.addEventListener('click', () => {
   clearAllCountryInfo();
 });
 
-// выбор из списка для показа детальной информации
+// выбор из списка стран для показа детальной информации
 countryListRef.addEventListener('click', ({ target }) => {
   if (target.tagName !== 'SPAN') return;
 
@@ -93,5 +95,5 @@ countryListRef.addEventListener('click', ({ target }) => {
 
   clearAllCountryInfo();
   searchBoxRef.value = selected.name.official;
-  renderCountryInfo([selected]);
+  renderCountryDetails([selected]);
 });
