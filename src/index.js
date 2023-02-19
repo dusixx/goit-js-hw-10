@@ -11,23 +11,6 @@ const countryInfoRef = document.querySelector('.country-info');
 const countryListRef = document.querySelector('.country-list');
 const clearInputRef = document.querySelector('.clear-input');
 
-// очистка поля ввода
-clearInputRef.addEventListener('click', () => {
-  searchBoxRef.value = '';
-  clearAllCountryInfo();
-});
-
-// выбор из списка для показа детальной информации
-countryListRef.addEventListener('click', ({ target }) => {
-  if (target.tagName !== 'SPAN') return;
-
-  const currData = renderCountryList.data[target.dataset.idx];
-
-  clearAllCountryInfo();
-  searchBoxRef.value = target.textContent.trim();
-  renderCountryInfo([currData]);
-});
-
 searchBoxRef.addEventListener(
   'input',
   utils.debounce(onSearchInput, DEBOUNCE_DELAY)
@@ -67,7 +50,7 @@ function clearAllCountryInfo() {
 }
 
 function renderCountryList(data = []) {
-  // кешируем данные для выбора из списка
+  // кешируем данные для выбора из списка без запроса к серверу
   renderCountryList.data = data;
 
   countryListRef.innerHTML = data
@@ -96,3 +79,24 @@ function renderCountryInfo(data = []) {
         <li><b>Languages</b>: ${Object.values(languages).join(', ')}</li>
     </ul>`;
 }
+
+////////////////////////////////
+// Доп. функциональность
+////////////////////////////////
+
+// очистка поля ввода
+clearInputRef.addEventListener('click', () => {
+  searchBoxRef.value = '';
+  clearAllCountryInfo();
+});
+
+// выбор из списка для показа детальной информации
+countryListRef.addEventListener('click', ({ target }) => {
+  if (target.tagName !== 'SPAN') return;
+
+  const currData = renderCountryList.data[target.dataset.idx];
+
+  clearAllCountryInfo();
+  searchBoxRef.value = target.textContent.trim();
+  renderCountryInfo([currData]);
+});
