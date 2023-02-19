@@ -58,20 +58,26 @@ body {
   width: 28px;
 
   font-size: 22px;
-  color: #a7a7a7;
+  color: #212121;
   line-height: 0;
 
   background-color: unset;
   border-style: unset;
   cursor: pointer;
-  transition: color ease-out 250ms;
+
+  opacity: 0.5;
+  transition: opacity ease-out 250ms;
 }
 
 .search-box__clear-btn:hover {
-  color: #212121;
+  opacity: 1;
 }
 
 /* country info */
+
+.country-list:not(:empty) {
+  margin-bottom: 15px;
+}
 
 .country-list__item {
   display: flex;
@@ -92,17 +98,13 @@ body {
   border: 1px solid rgb(175, 175, 175);
 }
 
-.country-info__list {
-  margin-top: 10px;
-  margin-left: 35px;
-}
-
 .country-info__list :not(:last-child) {
-  margin-bottom: 10px;
+  margin-bottom: 5px;
 }
 
 .country-info__title {
   display: flex;
   gap: 10px;
   align-items: center;
+  margin-bottom: 5px;
 }

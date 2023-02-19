@@ -93,7 +93,7 @@ countryListRef.addEventListener('click', ({ target }) => {
 
   const selected = renderCountryList.data[target.dataset.idx];
 
-  clearAllCountryInfo();
+  // clearAllCountryInfo();
   searchInputRef.value = selected.name.official;
   renderCountryDetails([selected]);
 });
