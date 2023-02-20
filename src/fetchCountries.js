@@ -14,14 +14,14 @@ export const utils = {
 };
 
 const DEF_REQUIRED_FIELDS = 'name,capital,population,flags,languages';
-const base = {
+const server = {
   url: 'https://restcountries.com',
   apiVer: 'v3.1',
 };
 
 // by name
 export const fetchCountries = (name, fields = DEF_REQUIRED_FIELDS) => {
-  const byName = `${base.url}/${base.apiVer}/name/${name}${
+  const byName = `${server.url}/${server.apiVer}/name/${name}${
     fields ? `?fields=${fields}` : ''
   }`;
 
