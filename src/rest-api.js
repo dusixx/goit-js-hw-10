@@ -1,18 +1,3 @@
-import { Notify } from 'notiflix';
-import debounce from 'lodash.debounce';
-
-export const utils = {
-  debounce,
-
-  error(msg, timeout = 1500) {
-    Notify.failure(msg, { timeout });
-  },
-
-  info(msg, timeout = 1500) {
-    Notify.info(msg, { timeout });
-  },
-};
-
 const DEF_REQUIRED_FIELDS = 'name,capital,population,flags,languages';
 const server = {
   url: 'https://restcountries.com',
@@ -20,7 +5,7 @@ const server = {
 };
 
 // by name
-export const fetchCountries = (name, fields = DEF_REQUIRED_FIELDS) => {
+const fetchCountriesByName = (name, fields = DEF_REQUIRED_FIELDS) => {
   const byName = `${server.url}/${server.apiVer}/name/${name}${
     fields ? `?fields=${fields}` : ''
   }`;
@@ -28,4 +13,8 @@ export const fetchCountries = (name, fields = DEF_REQUIRED_FIELDS) => {
   return fetch(byName).then(resp =>
     resp.ok ? resp.json() : Promise.reject(resp)
   );
+};
+
+export default {
+  fetchCountriesByName,
 };
