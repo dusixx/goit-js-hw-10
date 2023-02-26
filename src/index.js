@@ -1,8 +1,8 @@
 import './css/styles.css';
-import rest from './rest-api';
-import utils from './utils';
-import markup from './markup';
-import refs from './refs';
+import rest from './js/rest-api';
+import utils from './js/utils';
+import markup from './js/markup';
+import refs from './js/refs';
 
 const DEBOUNCE_DELAY = 300;
 const SEARCH_RESULT_LIMIT = 10;
