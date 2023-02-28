@@ -4,7 +4,6 @@ const server = {
   apiVer: 'v3.1',
 };
 
-// by name
 const fetchCountriesByName = (name, fields = DEF_REQUIRED_FIELDS) => {
   const byName = `${server.url}/${server.apiVer}/name/${name}${
     fields ? `?fields=${fields}` : ''
