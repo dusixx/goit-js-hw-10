@@ -4,7 +4,7 @@ const server = {
   apiVer: 'v3.1',
 };
 
-const fetchCountriesByName = (name, fields = DEF_REQUIRED_FIELDS) => {
+export const fetchCountriesByName = (name, fields = DEF_REQUIRED_FIELDS) => {
   const byName = `${server.url}/${server.apiVer}/name/${name}${
     fields ? `?fields=${fields}` : ''
   }`;
@@ -12,8 +12,4 @@ const fetchCountriesByName = (name, fields = DEF_REQUIRED_FIELDS) => {
   return fetch(byName).then(resp =>
     resp.ok ? resp.json() : Promise.reject(resp)
   );
-};
-
-export default {
-  fetchCountriesByName,
 };

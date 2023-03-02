@@ -1,0 +1,11 @@
+{{#each this}}
+  <li class='country-list__item'>
+    <img
+      class='country-list__flag'
+      src='{{flags.svg}}'
+      alt='{{name.official}} flag'
+      width='20'
+    />
+    <span class='country-list__name'>{{name.official}}</span>
+  </li>
+{{/each}}

@@ -1,8 +1,9 @@
 import './css/styles.css';
-import rest from './js/rest-api';
 import utils from './js/utils';
 import markup from './js/markup';
 import refs from './js/refs';
+import { fetchCountriesByName as fetchCountries } from './js/rest';
+// import getListMarkup from './templates/list.hbs';
 
 const DEBOUNCE_DELAY = 300;
 const SEARCH_RESULT_LIMIT = 10;
@@ -18,7 +19,7 @@ function onSearchInput({ target: el }) {
   clearAllCountryInfo();
 
   const name = el.value.trim();
-  if (name) rest.fetchCountriesByName(name).then(onFulfilled).catch(onRejected);
+  if (name) fetchCountries(name).then(onFulfilled).catch(onRejected);
 }
 
 function onRejected(reason) {
@@ -47,7 +48,7 @@ function clearAllCountryInfo() {
 function renderCountryList(data) {
   // кешируем для выбора из списка без запроса к серверу
   renderCountryList.data = data;
-  refs.countryList.innerHTML = markup.getCountryList(data);
+  refs.countryList.innerHTML = markup.getCountryList(data); // getListMarkup(data);
 }
 
 function renderCountryDetails(data) {
