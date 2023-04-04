@@ -51,8 +51,12 @@ function renderCountryList(data) {
   refs.countryList.innerHTML = markup.getCountryList(data); // getListMarkup(data);
 }
 
-function renderCountryDetails(data) {
-  refs.countryInfo.innerHTML = markup.getCountryDetails(data);
+function renderCountryDetails(data, newWindow = true) {
+  const target = newWindow
+    ? open('', '', 'width=500,height=250').document.body
+    : refs.countryInfo;
+
+  target.innerHTML = markup.getCountryDetails(data);
 }
 
 ////////////////////////
